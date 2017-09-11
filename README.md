@@ -24,7 +24,7 @@ Then you need to include a chat script (in the example above, chatScript.json), 
 ```
 {
     "_start": "hello",
-    "foundPlants": {
+    "hello": {
         "text": "Hello I'm an example bot 👋🏼",
         "next": "getName"
     },
