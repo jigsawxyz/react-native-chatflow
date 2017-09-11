@@ -1,0 +1,11 @@
+{
+  "name": "react-native-chatflow",
+  "version": "0.1.0",
+  "description": "ReactNative Chatflow Component",
+  "main": "components/Chat.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jigsaw XYZ",
+  "license": "ISC"
+}
