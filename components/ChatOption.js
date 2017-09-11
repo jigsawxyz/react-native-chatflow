@@ -6,8 +6,6 @@ import {
 	View
 } from 'react-native';
 
-import Styles from "../styles/Styles";
-
 export default class ChatOption extends Component {
 	render() {
 		return (
