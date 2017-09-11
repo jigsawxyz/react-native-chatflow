@@ -49,6 +49,7 @@ Then you need to include a chat script (in the example above, chatScript.json), 
 
 ## Properties/Options
 Name | Description
+---------------- | -------------------------------
 chatScript | The chat script JSON object
 images | Map of static images to use in chats
 backgroundColor | Background color of the chat holder
