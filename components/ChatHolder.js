@@ -69,6 +69,7 @@ export default class ChatHolder extends Component {
 		this.pushNextChat = this.pushNextChat.bind(this);
 		this.pushChats = this.pushChats.bind(this);
 		this.scrollToEnd = this.scrollToEnd.bind(this);
+		this.notifyOfChanges = this.notifyOfChanges.bind(this);
 	}
 
 	componentDidMount() {
@@ -162,6 +163,12 @@ export default class ChatHolder extends Component {
 			}
 
 			this.pushChats(chatsToPush);
+		}
+	}
+
+	notifyOfChanges() {
+		if (this.props.onChangeAnswers) {
+			this.props.onChangeAnswers(this.state.userPreferences);
 		}
 	}
 
@@ -259,7 +266,10 @@ export default class ChatHolder extends Component {
 			chats: updatedChats,
 			userPreferences: userPreferences,
 			lastChat: updatedChats[updatedChats.length - 1]
-		}, () => this.getNextChatsFromScript());
+		}, () => {
+			this.notifyOfChanges();
+			this.getNextChatsFromScript();
+		});
 	}
 
 	onUserResponse(value) {
