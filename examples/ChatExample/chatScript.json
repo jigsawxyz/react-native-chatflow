@@ -1,0 +1,25 @@
+{
+    "_start": "hello",
+    "hello": {
+        "text": "Hello there 👋🏼",
+        "next": "favouriteFruit"
+    },
+    "favouriteFruit": {
+        "text": "What's your favourite fruit?",
+        "options": [
+            {"text": "🍉", "value": "watermelon"},
+            {"text": "🍍", "value": "pineapple"},
+            {"text": "🍏", "value": "apple"}
+        ],
+        "next": "favouriteVeg"
+    },
+    "favouriteVeg": {
+        "text": "What's your favourite vegetable?",
+        "options": [
+            {"text": "🥕", "value": "carrot"},
+            {"text": "🌽", "value": "sweetcorn"},
+            {"text": "🍆", "value": "aubergine"}
+        ]
+    }
+    
+}

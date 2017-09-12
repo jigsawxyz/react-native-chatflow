@@ -153,7 +153,7 @@ export default class ChatHolder extends Component {
 			chatsToPush.push(scriptItem);
 			chatsToPush[chatsToPush.length - 1].id = this.props.chatScript._start + new Date().getTime();
 
-			while (scriptItem.next && !scriptItem.input) {
+			while (scriptItem.next && !scriptItem.input && !scriptItem.options) {
 				var key = scriptItem.next;
 				scriptItem = this.props.chatScript[key];
 
