@@ -313,9 +313,13 @@ export default class ChatHolder extends Component {
 			<KeyboardAvoidingView behavior="padding" style={[localStyles.outerContainer, {backgroundColor: this.props.backgroundColor}]}>
 				<ScrollView ref="scroller" showsVerticalScrollIndicator={false} style={localStyles.container} contentInset={{top: 10, left: 0, right: 0, bottom: 200}}>
 					<View onLayout={(evt) => this.onScrollContentSizeChange(evt)}>
-					{this.state.chats.map((chat) => {
+					{this.state.chats.map((chat, index) => {
 						if (chat.component) {
-							return this.props.onRenderComponent(chat.component, chat, this.state.userPreferences);
+							return (
+								<View key={chat.id + "_" + index}>
+									{this.props.onRenderComponent(chat.component, chat, this.state.userPreferences)}
+								</View>
+							);
 						} else {
 							return (
 								<Chat 
