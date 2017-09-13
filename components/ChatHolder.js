@@ -70,10 +70,19 @@ export default class ChatHolder extends Component {
 		this.pushChats = this.pushChats.bind(this);
 		this.scrollToEnd = this.scrollToEnd.bind(this);
 		this.notifyOfChanges = this.notifyOfChanges.bind(this);
+		this.getBackgroundColor = this.getBackgroundColor.bind(this);
 	}
 
 	componentDidMount() {
 		this.getNextChatsFromScript();
+	}
+
+	getBackgroundColor() {
+		if (this.props.backgroundColor) {
+			return this.props.backgroundColor;
+		} else {
+			return "#ffffff";
+		}
 	}
 
 	getBubbleStyles(user) {
@@ -329,6 +338,7 @@ export default class ChatHolder extends Component {
 					onFocus={() => this.onChatInputFocus()}
 					onDone={(value) => this.onUserResponse(value)}/>
 				<ChatOptions
+					backgroundColor={this.getBackgroundColor()}
 					visible={this.state.lastChat.options}
 					options={this.state.lastChat.options}
 					bubbleStyle={this.getBubbleOptionStyle()}

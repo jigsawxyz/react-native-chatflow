@@ -6,6 +6,12 @@ ReactNative component that helps you to quickly and easily build interactive cha
 npm install --save react-native-chatflow
 ```
 
+Note: this package requires react-native-linear-gradient. It is part of the dependencies of the package so will be automatically installed, but note that you will need to run the following command to link it as it is a native module:
+
+```javascript
+react-native link react-native-linear-gradient
+``` 
+
 ## Basic Usage
 It's really easy to get started. Put the following code in one of your components...
 

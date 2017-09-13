@@ -1,13 +1,14 @@
 {
   "name": "react-native-chatflow",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "ReactNative Chatflow Component",
   "main": "components/ChatHolder.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "react-addons-update": "*"    
+    "react-addons-update": "*",
+    "react-native-linear-gradient": "*"
   },
   "repository": {
     "type": "git",

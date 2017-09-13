@@ -1,7 +1,7 @@
 {
     "_start": "hello",
     "hello": {
-        "text": "Hello there 👋🏼",
+        "text": "Hello there 👋🏼. I am an example bot here to show you how the chatflow component will work",
         "next": "favouriteFruit"
     },
     "favouriteFruit": {
@@ -19,7 +19,15 @@
             {"text": "🥕", "value": "carrot"},
             {"text": "🌽", "value": "sweetcorn"},
             {"text": "🍆", "value": "aubergine"}
+        ],
+        "next": "favouriteAnimal"
+    },
+    "favouriteAnimal": {
+        "text": "What's your favourite animal?",
+        "options": [
+            {"text": "😻", "value": "cat"},
+            {"text": "🐶", "value": "dog"},
+            {"text": "🐝", "value": "bee"}
         ]
-    }
-    
+    },
 }
