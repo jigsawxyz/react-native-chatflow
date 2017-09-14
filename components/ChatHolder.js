@@ -10,13 +10,13 @@ import {
 import Chat from "./Chat";
 import ChatInput from "./ChatInput";
 import ChatOptions from "./ChatOptions";
-
-
 import update from "react-addons-update";
 
 const CHAT_PUSH_DELAY = 1000;
 const SCROLL_DELAY = 100;
 const BORDER_RADIUS = 20;
+const DEFAULT_BOTTOM_INSET = 200;
+const BOTTOM_OFFSET = 20;
 const DEFAULT_USER_BUBBLE_COLOUR = "#3E92F1";
 
 const BUBBLE_STYLES = {
@@ -62,7 +62,8 @@ export default class ChatHolder extends Component {
 			pendingChats: [],
 			chats: [],
 			lastChat: null,
-			userPreferences: {}
+			userPreferences: {},
+			bottomInset: DEFAULT_BOTTOM_INSET
 		};
 
 		this.startChatTimer = this.startChatTimer.bind(this);
@@ -281,6 +282,14 @@ export default class ChatHolder extends Component {
 		});
 	}
 
+	onChangeOptionsHolderSize(size) {
+		if (size.height + BOTTOM_OFFSET > DEFAULT_BOTTOM_INSET) {
+			this.setState({
+				bottomInset: size.height + BOTTOM_OFFSET
+			});
+		}
+	}
+
 	onUserResponse(value) {
 		var updatedChats = update(this.state.chats, {$apply: (chats) => {
 			chats.push({
@@ -311,7 +320,7 @@ export default class ChatHolder extends Component {
 
 		return (
 			<KeyboardAvoidingView behavior="padding" style={[localStyles.outerContainer, {backgroundColor: this.props.backgroundColor}]}>
-				<ScrollView ref="scroller" showsVerticalScrollIndicator={false} style={localStyles.container} contentInset={{top: 10, left: 0, right: 0, bottom: 200}}>
+				<ScrollView ref="scroller" showsVerticalScrollIndicator={false} style={localStyles.container} contentInset={{top: 10, left: 0, right: 0, bottom: this.state.bottomInset}}>
 					<View onLayout={(evt) => this.onScrollContentSizeChange(evt)}>
 					{this.state.chats.map((chat, index) => {
 						if (chat.component) {
@@ -347,7 +356,8 @@ export default class ChatHolder extends Component {
 					options={this.state.lastChat.options}
 					bubbleStyle={this.getBubbleOptionStyle()}
 					bubbleTextStyle={this.getBubbleOptionTextStyle()}
-					onSelectOption={(option) => this.onSelectOption(option)}/>
+					onSelectOption={(option) => this.onSelectOption(option)}
+					onChangeSize={(size) => this.onChangeOptionsHolderSize(size)}/>
 			</KeyboardAvoidingView>
 		)
 	}

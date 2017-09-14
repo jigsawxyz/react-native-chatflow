@@ -53,7 +53,6 @@ export default class ChatOptions extends Component {
 	}
 
 	getColorWithOpacity(color, opacity) {
-		console.log(color, opacity);
 		if (color.indexOf("#") >= 0) {
 			// This is a hex color, convert it
 			return this.hexToRgba(color, opacity);
@@ -82,7 +81,7 @@ export default class ChatOptions extends Component {
 		var gradientTo = this.getColorWithOpacity(this.props.backgroundColor, 1);
 
 		return (
-			<Animated.View style={containerStyles}>
+			<Animated.View style={containerStyles} onLayout={(evt) => this.props.onChangeSize(evt.nativeEvent.layout)}>
 				<LinearGradient colors={[gradientFrom, gradientTo]} style={localStyles.innerContainer}>
 					{this.props.options.map((option) => {
 						return (
