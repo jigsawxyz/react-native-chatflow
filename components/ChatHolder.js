@@ -287,6 +287,10 @@ export default class ChatHolder extends Component {
 			this.setState({
 				bottomInset: size.height + BOTTOM_OFFSET
 			});
+		} else {
+			this.setState({
+				bottomInset: DEFAULT_BOTTOM_INSET
+			});
 		}
 	}
 
