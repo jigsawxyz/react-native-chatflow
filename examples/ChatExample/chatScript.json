@@ -18,14 +18,7 @@
         "options": [
             {"text": "🥕", "value": "carrot"},
             {"text": "🌽", "value": "sweetcorn"},
-            {"text": "🍆", "value": "aubergine"},
-            {"text": "This is a really long answer", "value": "long"},
-            {"text": "another stupid answer", "value": "longer"},
-            {"text": "this is another crazy answer", "value": "longer2"},
-            {"text": "This is a really long answer", "value": "lon2"},
-            {"text": "another stupid answer", "value": "longer3"},
-            {"text": "this is another crazy answer", "value": "longer4"}
-            
+            {"text": "🍆", "value": "aubergine"}
         ],
         "next": "favouriteAnimal"
     },
