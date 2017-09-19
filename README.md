@@ -64,5 +64,11 @@ userBubbleTextStyle | Object with styles for the user bubble text
 botBubbleTextStyle | Object with styles for the bot bubble
 bubbleOptionStyle | Object with styles for the option bubble
 bubbleOptionTextStyle | Object with styles for the option bubble text (the options shown at the bottom of the screen)
+hidden | If set to true, the chat component will be hidden
 onRenderComponent | Method that renders custom components (see below)
 onChangeAnswers | Event fired when the user answers a question or clicks an option
+onChatHistoryChange | Event fired when the chat history changes (i.e. when the user or bot speaks)
+getChatHistory | Method that returns the chat history  
+
+## Loading existing chat history
+If you need to load chat history, create a ref on your component and then call chatFlow.loadChatHistory(chats)

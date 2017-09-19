@@ -58,6 +58,7 @@ export default class ChatHolder extends Component {
 	
 	constructor(props) {
 		super(props);
+
 		this.state = {
 			pendingChats: [],
 			chats: [],
@@ -72,6 +73,8 @@ export default class ChatHolder extends Component {
 		this.scrollToEnd = this.scrollToEnd.bind(this);
 		this.notifyOfChanges = this.notifyOfChanges.bind(this);
 		this.getBackgroundColor = this.getBackgroundColor.bind(this);
+		this.getChatHistory = this.getChatHistory.bind(this);
+		this.loadChatHistory = this.loadChatHistory.bind(this);
 	}
 
 	componentDidMount() {
@@ -84,6 +87,16 @@ export default class ChatHolder extends Component {
 		} else {
 			return "#ffffff";
 		}
+	}
+
+	loadChatHistory(chats) {
+		this.setState({
+			chats: chats
+		});
+	}
+
+	getChatHistory() {
+		return this.state.chats;
 	}
 
 	getBubbleStyles(user) {
@@ -210,6 +223,10 @@ export default class ChatHolder extends Component {
 				lastChat: updatedChats[updatedChats.length - 1]
 			}, () => {
 				this.scrollToEnd();
+				
+				if (this.props.onChatHistoryChange) {
+					this.props.onChatHistoryChange(this.state.chats);
+				}
 
 				if (this.state.pendingChats.length > 0) {
 					this.startChatTimer();					
@@ -277,6 +294,11 @@ export default class ChatHolder extends Component {
 			userPreferences: userPreferences,
 			lastChat: updatedChats[updatedChats.length - 1]
 		}, () => {
+			
+			if (this.props.onChatHistoryChange) {
+				this.props.onChatHistoryChange(this.state.chats);
+			}
+
 			this.notifyOfChanges();
 			this.getNextChatsFromScript();
 		});
@@ -318,7 +340,7 @@ export default class ChatHolder extends Component {
 	}	
 
 	render() {
-		if (!this.state.chats || this.state.chats.length == 0) {
+		if (this.props.hidden || !this.state.chats || this.state.chats.length == 0) {
 			return null;
 		}
 
