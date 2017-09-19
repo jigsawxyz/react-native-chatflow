@@ -39,11 +39,18 @@ export default class ChatInput extends Component {
 			return null;
 		}
 
+		var textInputStyles = localStyles.textInput;
+		
+		if (this.props.textStyle) {
+			textInputStyles.push(this.props.textStyle);
+		}
+		
+
 		return (
 			<View style={localStyles.container}>
 				<TextInput 
 					value={this.state.text}
-					style={localStyles.textInput} 
+					style={textInputStyles} 
 					placeholder={this.props.placeholder}
 					onFocus={this.props.onFocus}
 					onChangeText={(value) => this.onChangeText(value)}

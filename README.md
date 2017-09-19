@@ -64,6 +64,7 @@ userBubbleTextStyle | Object with styles for the user bubble text
 botBubbleTextStyle | Object with styles for the bot bubble
 bubbleOptionStyle | Object with styles for the option bubble
 bubbleOptionTextStyle | Object with styles for the option bubble text (the options shown at the bottom of the screen)
+textInputStyle | Text styles for the text input box
 hidden | If set to true, the chat component will be hidden
 onRenderComponent | Method that renders custom components (see below)
 onChangeAnswers | Event fired when the user answers a question or clicks an option
