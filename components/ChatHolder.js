@@ -404,7 +404,7 @@ export default class ChatHolder extends Component {
 					placeholder={this.state.lastChat.placeholder}
 					onFocus={() => this.onChatInputFocus()}
 					textStyle={this.props.textInputStyle}
-					chatInputBackgroundColor={this.props.chatInputBackgroundColor}
+					backgroundColor={this.props.chatInputBackgroundColor}
 					onDone={(value) => this.onUserResponse(value)}/>
 				<ChatOptions
 					backgroundColor={this.getBackgroundColor()}

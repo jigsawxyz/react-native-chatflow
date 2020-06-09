@@ -43,7 +43,7 @@ export default class ChatInput extends Component {
 		} 
 
 		return {
-			backgroundColor: this.props.chatInputBackgroundColor
+			backgroundColor: this.props.backgroundColor
 		}
 		
 	}
