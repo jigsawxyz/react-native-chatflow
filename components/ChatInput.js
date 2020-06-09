@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
 	StyleSheet,
+	SafeAreaView,
 	Text,
 	View,
 	TextInput,
@@ -47,17 +48,19 @@ export default class ChatInput extends Component {
 		
 
 		return (
-			<View style={localStyles.container}>
-				<TextInput 
-					value={this.state.text}
-					style={textInputStyles} 
-					placeholder={this.props.placeholder}
-					onFocus={this.props.onFocus}
-					onChangeText={(value) => this.onChangeText(value)}
-					returnKeyType="send"
-					onSubmitEditing={() => this.onDone()}
-					/>
-			</View>
+			<SafeAreaView>
+				<View style={localStyles.container}>
+					<TextInput 
+						value={this.state.text}
+						style={textInputStyles} 
+						placeholder={this.props.placeholder}
+						onFocus={this.props.onFocus}
+						onChangeText={(value) => this.onChangeText(value)}
+						returnKeyType="send"
+						onSubmitEditing={() => this.onDone()}
+						/>
+				</View>
+			</SafeAreaView>
 		)
 	}
 }

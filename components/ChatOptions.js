@@ -115,6 +115,7 @@ const localStyles = StyleSheet.create({
 		flexWrap: "wrap",
 		flex: 1,
 		justifyContent: "center",
-		padding: 20
+		padding: 20,
+		paddingBottom: 30
 	}
 });
