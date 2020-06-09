@@ -198,11 +198,14 @@ export default class ChatHolder extends Component {
 	}
 
 	scrollToEnd() {
-		setTimeout(() => {
-			if (this.refs.scroller) {
-				this.refs.scroller.scrollToEnd({animated: true});
-			}	
-		}, SCROLL_DELAY);
+		if (this.state.chats.length > 2) {
+			setTimeout(() => {
+				if (this.refs.scroller) {
+					this.refs.scroller.scrollToEnd({animated: true});
+				}	
+			}, SCROLL_DELAY);
+		}
+		
 	}
 
 	pushNextChat() {
@@ -401,6 +404,7 @@ export default class ChatHolder extends Component {
 					placeholder={this.state.lastChat.placeholder}
 					onFocus={() => this.onChatInputFocus()}
 					textStyle={this.props.textInputStyle}
+					chatInputBackgroundColor={this.props.chatInputBackgroundColor}
 					onDone={(value) => this.onUserResponse(value)}/>
 				<ChatOptions
 					backgroundColor={this.getBackgroundColor()}

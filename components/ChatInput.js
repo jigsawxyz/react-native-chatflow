@@ -35,6 +35,19 @@ export default class ChatInput extends Component {
 		});
 	}
 
+	getBackgroundColorStyle() {
+		if (!this.props.backgroundColor) {
+			return {
+				backgroundColor: "#E4E4E4"
+			};
+		} 
+
+		return {
+			backgroundColor: this.props.chatInputBackgroundColor
+		}
+		
+	}
+
 	render() {
 		if (!this.props.visible) {
 			return null;
@@ -48,8 +61,8 @@ export default class ChatInput extends Component {
 		
 
 		return (
-			<SafeAreaView>
-				<View style={localStyles.container}>
+			<SafeAreaView style={this.getBackgroundColorStyle()}>
+				<View style={[localStyles.container, this.getBackgroundColorStyle()]}>
 					<TextInput 
 						value={this.state.text}
 						style={textInputStyles} 
