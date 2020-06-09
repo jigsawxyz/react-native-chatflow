@@ -1,6 +1,6 @@
 {
   "name": "react-native-chatflow",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "ReactNative Chatflow Component",
   "main": "components/ChatHolder.js",
   "scripts": {

@@ -17,7 +17,7 @@ export default class Chat extends Component {
 	}
 
 	componentDidMount() {
-		Animated.spring(this.state.showing, {toValue: 1}).start();
+		Animated.spring(this.state.showing, {toValue: 1, useNativeDriver: false}).start();
 	}
 
 	getImageSource(image) {

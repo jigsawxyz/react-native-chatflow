@@ -27,7 +27,7 @@ export default class ChatOptions extends Component {
 				this.setState({
 					visible: true
 				}, () => {
-					Animated.spring(this.state.position, {toValue: 1}).start();
+					Animated.spring(this.state.position, {toValue: 1, useNativeDriver: false}).start();
 				});
 			}
 		} else {

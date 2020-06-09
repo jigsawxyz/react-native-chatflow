@@ -18,6 +18,8 @@ const BORDER_RADIUS = 20;
 const DEFAULT_BOTTOM_INSET = 200;
 const BOTTOM_OFFSET = 20;
 const DEFAULT_USER_BUBBLE_COLOUR = "#3E92F1";
+const DEFAULT_CONTENT_OFFSET = null;
+const DEFAULT_CONTENT_INSET_TOP = 10;
 
 const BUBBLE_STYLES = {
 	bubble: {
@@ -341,6 +343,27 @@ export default class ChatHolder extends Component {
 		
 	}	
 
+	getContentInset() {
+		if (!this.props.contentInset) {
+			return {
+				top: DEFAULT_CONTENT_INSET_TOP, 
+				left: 0, 
+				right: 0, 
+				bottom: this.state.bottomInset
+			};
+		}
+
+		return Object.assign({
+			bottom: this.state.bottomInset
+		}, this.props.contentInset);
+	}
+
+	getContentOffset() {
+		if (!this.props.contentOffset) {
+			return DEFAULT_CONTENT_OFFSET;
+		}
+	}
+
 	render() {
 		if (this.props.hidden || !this.state.chats || this.state.chats.length == 0) {
 			return null;
@@ -348,7 +371,7 @@ export default class ChatHolder extends Component {
 
 		return (
 			<KeyboardAvoidingView behavior="padding" style={[localStyles.outerContainer, {backgroundColor: this.props.backgroundColor}]}>
-				<ScrollView ref="scroller" showsVerticalScrollIndicator={false} style={localStyles.container} contentInset={{top: 10, left: 0, right: 0, bottom: this.state.bottomInset}}>
+				<ScrollView ref="scroller" showsVerticalScrollIndicator={false} style={localStyles.container} contentInset={this.getContentInset()}>
 					<View onLayout={(evt) => this.onScrollContentSizeChange(evt)}>
 					{this.state.chats.map((chat, index) => {
 						if (chat.component) {
