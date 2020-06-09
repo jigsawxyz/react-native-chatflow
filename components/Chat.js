@@ -61,9 +61,19 @@ export default class Chat extends Component {
 				</View>
 			);
 		} else {
+			var actualContent = null;
+
+			if (this.props.chat.text) {
+				actualContent = (
+					<Text style={textStyles}>{this.props.chat.text}</Text>
+				);
+			} else if (this.props.chat.component) {
+				actualContent = this.props.onRenderComponent(this.props.chat.component, this.props.chat, this.props.userPreferences);
+			}
+
 			content = (
 				<View style={containerStyles}>
-					<Text style={textStyles}>{this.props.chat.text}</Text>
+					{actualContent}
 				</View>
 			);
 		}

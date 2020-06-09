@@ -68,6 +68,7 @@ textInputStyle | Text styles for the text input box
 hidden | If set to true, the chat component will be hidden
 onRenderComponent | Method that renders custom components (see below)
 onChangeAnswers | Event fired when the user answers a question or clicks an option
+onChangeField(field, value) | Event fired when a user changes a field
 onChatHistoryChange | Event fired when the chat history changes (i.e. when the user or bot speaks)
 getChatHistory | Method that returns the chat history  
 

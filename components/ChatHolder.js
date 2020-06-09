@@ -191,9 +191,13 @@ export default class ChatHolder extends Component {
 		}
 	}
 
-	notifyOfChanges() {
+	notifyOfChanges(field) {
 		if (this.props.onChangeAnswers) {
 			this.props.onChangeAnswers(this.state.userPreferences);
+		}
+
+		if (field && this.props.onChangeField) {
+			this.props.onChangeField(field, this.state.userPreferences[field]);
 		}
 	}
 
@@ -306,7 +310,7 @@ export default class ChatHolder extends Component {
 				this.props.onChatHistoryChange(this.state.chats);
 			}
 
-			this.notifyOfChanges();
+			this.notifyOfChanges(this.state.lastChat.field);
 			this.getNextChatsFromScript();
 		});
 	}
@@ -336,10 +340,22 @@ export default class ChatHolder extends Component {
 			return chats;
 		}});
 
+		var userPreferences = update(this.state.userPreferences, {$apply: (userPreferences) => {
+			if (this.state.lastChat.field) {
+				userPreferences[this.state.lastChat.field] = value;	
+			}
+
+			return userPreferences;
+		}});
+
 		this.setState({
 			chats: updatedChats,
+			userPreferences: userPreferences,
 			lastChat: updatedChats[updatedChats.length - 1]
-		}, () => this.getNextChatsFromScript());
+		}, () => {
+			this.getNextChatsFromScript();
+			this.notifyOfChanges(this.state.lastChat.field);
+		});
 	}
 
 	onScrollContentSizeChange(evt) {
@@ -377,7 +393,7 @@ export default class ChatHolder extends Component {
 				<ScrollView ref="scroller" showsVerticalScrollIndicator={false} style={localStyles.container} contentInset={this.getContentInset()}>
 					<View onLayout={(evt) => this.onScrollContentSizeChange(evt)}>
 					{this.state.chats.map((chat, index) => {
-						if (chat.component) {
+						if (chat.component && !chat.bubble) {
 							return (
 								<View key={chat.id + "_" + index}>
 									{this.props.onRenderComponent(chat.component, chat, this.state.userPreferences)}
@@ -392,7 +408,9 @@ export default class ChatHolder extends Component {
 									botBubbleStyle={this.getBubbleStyles(false)}
 									botBubbleTextStyle={this.getBubbleTextStyles(false)}
 									userBubbleStyle={this.getBubbleStyles(true)}
-									userBubbleTextStyle={this.getBubbleTextStyles(true)}/>
+									userBubbleTextStyle={this.getBubbleTextStyles(true)}
+									onRenderComponent={this.props.onRenderComponent}
+									/>
 							);
 						}
 						
