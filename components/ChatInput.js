@@ -67,6 +67,7 @@ export default class ChatInput extends Component {
 						value={this.state.text}
 						style={textInputStyles} 
 						placeholder={this.props.placeholder}
+						keyboardType={this.props.keyboardType}
 						onFocus={this.props.onFocus}
 						onChangeText={(value) => this.onChangeText(value)}
 						returnKeyType="send"

@@ -420,6 +420,7 @@ export default class ChatHolder extends Component {
 				<ChatInput 
 					visible={this.state.lastChat.input}
 					placeholder={this.state.lastChat.placeholder}
+					keyboardType={this.state.lastChat.keyboardType}
 					onFocus={() => this.onChatInputFocus()}
 					textStyle={this.props.textInputStyle}
 					backgroundColor={this.props.chatInputBackgroundColor}
