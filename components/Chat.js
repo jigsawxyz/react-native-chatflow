@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
 	StyleSheet,
+	TouchableWithoutFeedback,
 	Text,
 	View,
 	Animated,
@@ -71,11 +72,23 @@ export default class Chat extends Component {
 				actualContent = this.props.onRenderComponent(this.props.chat.component, this.props.chat, this.props.userPreferences);
 			}
 
-			content = (
-				<View style={containerStyles}>
-					{actualContent}
-				</View>
-			);
+			if (this.props.chat.resettable) {
+				content = (
+					<TouchableWithoutFeedback onLongPress={this.props.onOfferReset}>
+						<View style={containerStyles}>
+							{actualContent}
+						</View>
+					</TouchableWithoutFeedback>
+				);
+			} else {
+				content = (
+					<View style={containerStyles}>
+						{actualContent}
+					</View>
+				);
+			}
+
+			
 		}
 		
 

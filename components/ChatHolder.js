@@ -362,6 +362,17 @@ export default class ChatHolder extends Component {
 		
 	}	
 
+	async reset() {
+		await this.setState({
+			chats: [],
+			pendingChats: [],
+			lastChat: null,
+			userPreferences: {}
+		});
+
+		this.getNextChatsFromScript();
+	}
+
 	getContentInset() {
 		if (!this.props.contentInset) {
 			return {
@@ -410,6 +421,7 @@ export default class ChatHolder extends Component {
 									userBubbleStyle={this.getBubbleStyles(true)}
 									userBubbleTextStyle={this.getBubbleTextStyles(true)}
 									onRenderComponent={this.props.onRenderComponent}
+									onOfferReset={this.props.onOfferReset}
 									/>
 							);
 						}
