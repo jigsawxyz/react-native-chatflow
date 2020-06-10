@@ -402,7 +402,7 @@ export default class ChatHolder extends Component {
 						} else {
 							return (
 								<Chat 
-									key={chat.id} 
+									key={chat.id + "_" + index}
 									chat={chat}
 									images={this.props.images}
 									botBubbleStyle={this.getBubbleStyles(false)}
