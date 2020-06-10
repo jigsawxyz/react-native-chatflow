@@ -435,6 +435,8 @@ export default class ChatHolder extends Component {
 					onFocus={() => this.onChatInputFocus()}
 					textStyle={this.props.textInputStyle}
 					backgroundColor={this.props.chatInputBackgroundColor}
+					userBubbleStyle={this.getBubbleStyles(true)}
+					userBubbleTextStyle={this.getBubbleTextStyles(true)}
 					onDone={(value) => this.onUserResponse(value)}/>
 				<ChatOptions
 					backgroundColor={this.getBackgroundColor()}

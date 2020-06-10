@@ -5,7 +5,8 @@ import {
 	Text,
 	View,
 	TextInput,
-	KeyboardAvoidingView
+	KeyboardAvoidingView,
+	TouchableOpacity
 } from 'react-native';
 
 export default class ChatInput extends Component {
@@ -48,6 +49,12 @@ export default class ChatInput extends Component {
 		
 	}
 
+	getButtonStyles() {
+		var style = [this.props.userBubbleStyle];
+		style.push(localStyles.button)
+		return style;
+	}
+
 	render() {
 		if (!this.props.visible) {
 			return null;
@@ -62,16 +69,22 @@ export default class ChatInput extends Component {
 		return (
 			<SafeAreaView style={this.getBackgroundColorStyle()}>
 				<View style={[localStyles.container, this.getBackgroundColorStyle()]}>
-					<TextInput 
-						value={this.state.text}
-						style={textInputStyles} 
-						placeholder={this.props.placeholder}
-						keyboardType={this.props.keyboardType}
-						onFocus={this.props.onFocus}
-						onChangeText={(value) => this.onChangeText(value)}
-						returnKeyType="send"
-						onSubmitEditing={() => this.onDone()}
-						/>
+					<View style={localStyles.inputContainer}>
+						<TextInput 
+							value={this.state.text}
+							style={textInputStyles} 
+							placeholder={this.props.placeholder}
+							keyboardType={this.props.keyboardType}
+							onFocus={this.props.onFocus}
+							onChangeText={(value) => this.onChangeText(value)}
+							returnKeyType="send"
+							onSubmitEditing={() => this.onDone()}
+							/>
+						<TouchableOpacity style={this.getButtonStyles()}>
+							<Text style={[this.props.userBubbleTextStyle, {fontSize: this.props.textStyle.fontSize, fontFamily: this.props.textStyle.fontFamily, fontWeight: this.props.textStyle.fontWeight}]}>Go</Text>
+						</TouchableOpacity>
+					</View>
+					
 				</View>
 			</SafeAreaView>
 		)
@@ -81,11 +94,34 @@ export default class ChatInput extends Component {
 const localStyles = StyleSheet.create({
 	container: {
 		backgroundColor: "#E4E4E4",
-		padding: 20
+		padding: 20,
+		flexDirection: "row"
+	},
+	inputContainer: {
+		overflow: "hidden",
+		flexDirection: "row",
+		backgroundColor: "#ffffff",
+		flex: 1,
+		height: 50,
+		borderRadius: 10
 	},
 	textInput: {
-		backgroundColor: "#ffffff",
 		padding: 15,
-		borderRadius: 5
+		flex: 1,
+	},
+	buttonText: {
+		fontWeight: "700"
+	},	
+	button: {
+		marginLeft: 0,
+		padding: 10,
+		height: 50,
+		width: 50,
+		borderTopLeftRadius: 0,
+		borderBottomLeftRadius: 0,
+		borderTopRightRadius: 0,
+		borderBottomRightRadius: 0,
+		alignItems: "center",
+		justifyContent: "center"
 	}
 });
