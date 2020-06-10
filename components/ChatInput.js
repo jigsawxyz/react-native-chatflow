@@ -53,13 +53,12 @@ export default class ChatInput extends Component {
 			return null;
 		}
 
-		var textInputStyles = localStyles.textInput;
+		var textInputStyles = [localStyles.textInput];
 		
 		if (this.props.textStyle) {
 			textInputStyles.push(this.props.textStyle);
 		}
 		
-
 		return (
 			<SafeAreaView style={this.getBackgroundColorStyle()}>
 				<View style={[localStyles.container, this.getBackgroundColorStyle()]}>
