@@ -285,7 +285,6 @@ export default class ChatHolder extends Component {
 			}
 			return userPreferences;
 		}});
-		
 
 		var updatedChats = update(this.state.chats, {$apply: (chats) => {
 			chats.push({

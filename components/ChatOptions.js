@@ -79,6 +79,10 @@ export default class ChatOptions extends Component {
 		var gradientFrom = this.getColorWithOpacity(this.props.backgroundColor, 0);
 		var gradientTo = this.getColorWithOpacity(this.props.backgroundColor, 1);
 
+		if (!this.props.options) {
+			return null;
+		}
+
 		return (
 			<Animated.View style={containerStyles} onLayout={(evt) => this.props.onChangeSize(evt.nativeEvent.layout)}>
 				<LinearGradient colors={[gradientFrom, gradientTo]} style={localStyles.innerContainer}>
