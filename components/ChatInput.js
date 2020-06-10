@@ -17,8 +17,8 @@ export default class ChatInput extends Component {
 		};
 	}
 
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.visible && !this.props.visible) {
+	componentDidUpdate(prevProps) {
+		if (this.props.visible && !prevProps.visible) {
 			this.setState({
 				text: null
 			});

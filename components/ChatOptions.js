@@ -21,9 +21,9 @@ export default class ChatOptions extends Component {
 		this.getColorWithOpacity = this.getColorWithOpacity.bind(this);
 	}
 
-	componentWillReceiveProps(nextProps) {
+	componentDidUpdate(prevProps) {
 		if (!this.state.visible) {
-			if (nextProps.options && nextProps.options.length > 0) {
+			if (this.props.options && this.props.options.length > 0) {
 				this.setState({
 					visible: true
 				}, () => {
@@ -31,7 +31,7 @@ export default class ChatOptions extends Component {
 				});
 			}
 		} else {
-			if (!nextProps.options || nextProps.options.length == 0) {
+			if (!this.props.options || this.props.options.length == 0) {
 				this.setState({
 					visible: false
 				}, () => {
@@ -41,7 +41,6 @@ export default class ChatOptions extends Component {
 				});
 			}
 		}
-		
 	}
 
 	hexToRgba(hex, opacity) {
