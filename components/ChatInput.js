@@ -80,7 +80,7 @@ export default class ChatInput extends Component {
 							returnKeyType="send"
 							onSubmitEditing={() => this.onDone()}
 							/>
-						<TouchableOpacity style={this.getButtonStyles()}>
+						<TouchableOpacity activeOpacity={0.7} style={this.getButtonStyles()} onPress={() => this.onDone()}>
 							<Text style={[this.props.userBubbleTextStyle, {fontSize: this.props.textStyle.fontSize, fontFamily: this.props.textStyle.fontFamily, fontWeight: this.props.textStyle.fontWeight}]}>Go</Text>
 						</TouchableOpacity>
 					</View>
